@@ -9,6 +9,7 @@ FileSize = list[int]
 
 
 def _print_stats(file_size: FileSize, status_codes: StatusCodes) -> None:
+    """Print stats."""
     print('File size: {}'.format(file_size[0]))
     for key in sorted(status_codes.keys()):
         if key in status_codes:
@@ -20,6 +21,7 @@ def _parse_line(
     status_codes: StatusCodes,
     file_size: FileSize
         ) -> tuple[StatusCodes, FileSize]:
+    """Parse line."""
     with suppress(BaseException):
         line = line[:-1]
         word = line.split(' ')

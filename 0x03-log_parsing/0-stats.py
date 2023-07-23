@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Log parsing."""
+"""A script that reads stdin line by line and computes metrics."""
 from contextlib import suppress
 from sys import stdin
 
@@ -9,7 +9,7 @@ FileSize = list[int]
 
 
 def _print_stats(file_size: FileSize, status_codes: StatusCodes) -> None:
-    """Print stats."""
+    """Private method to print stats."""
     print('File size: {}'.format(file_size[0]))
     for key in sorted(status_codes.keys()):
         if key in status_codes:
@@ -21,7 +21,7 @@ def _parse_line(
     status_codes: StatusCodes,
     file_size: FileSize
         ) -> tuple[StatusCodes, FileSize]:
-    """Parse line."""
+    """A private method to parse lines."""
     with suppress(BaseException):
         line = line[:-1]
         word = line.split(' ')
@@ -33,7 +33,7 @@ def _parse_line(
 
 
 def main() -> None:
-    """Main function."""
+    """Main function to handle module logic."""
 
     file_size = [0]
     status_codes = {200: 0, 301: 0, 400: 0, 401: 0,

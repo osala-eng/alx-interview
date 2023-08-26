@@ -16,3 +16,9 @@ def makeChange(coins, total):
             total = total % coin
 
     return temp_value if total == 0 else -1
+
+
+if __name__ == "__main__":
+    print(makeChange([1, 2, 25], 37))
+
+    print(makeChange([1256, 54, 48, 16, 102], 1453))

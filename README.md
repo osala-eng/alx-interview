@@ -1,1 +1,1 @@
-# Sample Technical Interview Problems
+# Sample Technical Interview Problem

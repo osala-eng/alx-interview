@@ -54,5 +54,25 @@ def print_board(board):
     print(queens)
 
 
+def handle_input(list) -> int:
+    """Handle input."""
+    if len(list) != 2:
+        print("Usage: nqueens N")
+        exit(1)
+
+    try:
+        n = int(list[1])
+    except ValueError:
+        print("N must be a number")
+        exit(1)
+
+    if n < 4:
+        print("N must be at least 4")
+        exit(1)
+
+    return n
+
+
 if __name__ == "__main__":
-    nqueens(int(sys.argv[1]))
+    n = handle_input(sys.argv)
+    nqueens(n)

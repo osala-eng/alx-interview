@@ -43,6 +43,5 @@ def isWinner(x, nums):
     return "Ben" if c >= len(nums) / 2 else "Maria"
 
 
-
 if __name__ == "__main__":
     print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))

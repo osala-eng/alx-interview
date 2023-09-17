@@ -8,7 +8,7 @@
 
 const request = require('request');
 const filmNum = process.argv[2] + '/';
-const filmURL = 'https://swapi-api.hbtn.io/api/films/';
+const filmURL = 'https://swapi-api.alx-tools.com/api/films/';
 // Makes API request, sets async to allow await promise
 request(filmURL + filmNum, async (err, res, body) => {
   if (err) return console.error(err);

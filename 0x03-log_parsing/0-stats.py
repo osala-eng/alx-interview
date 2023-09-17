@@ -12,9 +12,9 @@ if __name__ == '__main__':
     def _print_stats(file_size: FileSize, status_codes: StatusCodes) -> None:
         """Private method to print stats."""
         print('File size: {}'.format(file_size[0]))
-        for key in sorted(status_codes.keys()):
-            if key in status_codes:
-                print('{}: {}'.format(key, status_codes[key]))
+        for key, val in status_codes.items():
+            if val != 0:
+                print('{}: {}'.format(key, val))
 
     def _parse_line(
         line: str,

@@ -2,11 +2,12 @@
 """A script that reads stdin line by line and computes metrics."""
 from contextlib import suppress
 from sys import stdin
+from typing import Dict, List
 
 
 if __name__ == '__main__':
-    StatusCodes = dict[int, int]
-    FileSize = list[int]
+    StatusCodes = Dict[int, int]
+    FileSize = List[int]
 
     def _print_stats(file_size: FileSize, status_codes: StatusCodes) -> None:
         """Private method to print stats."""

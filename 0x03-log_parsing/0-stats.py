@@ -2,7 +2,7 @@
 """A script that reads stdin line by line and computes metrics."""
 from contextlib import suppress
 from sys import stdin
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 
 if __name__ == '__main__':
@@ -20,7 +20,7 @@ if __name__ == '__main__':
         line: str,
         status_codes: StatusCodes,
         file_size: FileSize
-            ) -> tuple[StatusCodes, FileSize]:
+            ) -> Tuple[StatusCodes, FileSize]:
         """A private method to parse lines."""
         with suppress(BaseException):
             line = line[:-1]

@@ -1,47 +1,34 @@
-#!/usr/bin/python3
-"""
-Prime number Game module.
-"""
+#!/usr/bin/env python3
+"""Prime Game."""
 
 
 def isWinner(x, nums):
-    """Prime number Game."""
+    """function that checks for the winner"""
     if not nums or x < 1:
         return None
+    max_num = max(nums)
 
-    n = max(nums)
-    sieve = [True] * (n + 1)
-    sieve[0] = sieve[1] = False
-
-    # Sieve of Eratosthenes
-    for i in range(2, int(n ** 0.5) + 1):
-        if sieve[i]:
-            for j in range(i * i, n + 1, i):
-                sieve[j] = False
-
-    prime_numbers = [i for i, is_prime in enumerate(sieve) if is_prime]
-
-    c = 0
-    num_primes = len(prime_numbers)
-
-    # Binary search function to find the index of the first prime >= n
-    def binary_search(nums, n):
-        left, right = 0, len(nums) - 1
-        while left <= right:
-            mid = left + (right - left) // 2
-            if nums[mid] >= n:
-                right = mid - 1
-            else:
-                left = mid + 1
-        return left
-
-    for num in nums:
-        index = binary_search(prime_numbers, num)
-        if index < num_primes and prime_numbers[index] == num:
-            c += 1
-
-    return "Ben" if c >= len(nums) / 2 else "Maria"
+    filter = [True for _ in range(max(max_num + 1, 2))]
+    for i in range(2, int(pow(max_num, 0.5)) + 1):
+        if not filter[i]:
+            continue
+        for j in range(i * i, max_num + 1, i):
+            filter[j] = False
+    filter[0] = filter[1] = False
+    y = 0
+    for i in range(len(filter)):
+        if filter[i]:
+            y += 1
+        filter[i] = y
+    player1 = 0
+    for x in nums:
+        player1 += filter[x] % 2 == 1
+    if player1 * 2 == len(nums):
+        return None
+    if player1 * 2 > len(nums):
+        return "Maria"
+    return "Ben"
 
 
 if __name__ == "__main__":
-    print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))
+    assert isWinner(5, [2, 5, 1, 4, 3]) == "Ben", "Expected Ben"
